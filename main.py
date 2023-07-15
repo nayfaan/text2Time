@@ -28,8 +28,17 @@ def timeDiff(timestamp):
     return [timestamp, hours, mins]
 
 def run():
-    timestamps = input("Input timestamps: ")
+    while True:
+        timestamps = input("Input timestamps: ")
+        if timestamps:
+            break
+    
     timestamps = re.sub("\s","", timestamps)
+    try:
+        timestamps = re.search("(.+\d)([^\d]*)",timestamps).groups()[0]
+    except:
+        pass
+    
     print()
     
     if timestamps == "0":
@@ -84,3 +93,6 @@ if __name__ == "__main__":
         print()
         input("Press Enter to continue...")
         os.system('clear')
+        
+    print()
+    print("Exited successfully.")
